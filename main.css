@@ -49,3 +49,23 @@ body {
 	font-size: 18px;
 	box-shadow: 0 0 5px 5px #888;
 }
+#view-source {
+	position: fixed;
+	height: 37px;
+	padding-top: 13px;
+	width: 300px;
+	top: 50px;
+	right: -80px;
+	background-color: #CD0000;
+	transform:rotate(45deg);
+	-ms-transform:rotate(45deg);
+	-webkit-transform:rotate(45deg); 
+	color: #ffffff;
+	text-align: center;
+	font-family: roboto-condensed;
+	font-size: 18px;
+}
+#view-source a {
+	color: #ffffff;
+	text-decoration: none;
+}

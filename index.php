@@ -23,6 +23,26 @@ else if ($airport == "ALA") {
   $baselng = 77.0406;
   $airportname = "Almaty, Kazakhstan";
 }
+else if ($airport == "PVG") {
+  $baselat = 31.1433;
+  $baselng = 121.8053;
+  $airportname = "Shanghai (Pudong)";
+}
+else if ($airport == "CDG") {
+  $baselat = 49.0128;
+  $baselng = 2.5500;
+  $airportname = "Charles de Gaulle, Paris";
+}
+else if ($airport == "SVO") {
+  $baselat = 55.9728;
+  $baselng = 37.4147;
+  $airportname = "Sheremetyevo Airport, Moscow";
+}
+else if ($airport == "LAX") {
+  $baselat = 33.9471;
+  $baselng = -118.4082;
+  $airportname = "Los Angeles International";
+}
 else {
   $baselat = 0;
   $baselng = 0;
@@ -93,7 +113,7 @@ function marker(lat, lng) {
 <div id = "current">Currently showing air routes from <?php print $airportname ?></div>
 <img src = "airport-big.png">
 <form method = "get" action = "search.php">
-  <input type = "text" placeholder = "Enter Airport Name or Code" name = "terms">
+  <input type = "text" placeholder = "Enter Airport Name or Code" name = "terms" autocomplete = "off">
 </form>
 </div>
 </body>

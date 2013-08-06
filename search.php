@@ -1,16 +1,29 @@
 <?php
 $terms = $_GET['terms'];
-if ($terms == "LHR" or strpos($terms,'LHR') !== false or strpos($terms,'Heathrow') !== false or strpos($terms,'London') !== false or strpos($terms,'UK') !== false) {
+$terms = strtolower($terms);
+if (strpos('lhr heathrow london uk', $terms) !== false) {
 	header("Location: index.php?airport=LHR");
 }
-else if ($terms == "JFK" or strpos($terms,'JFK') !== false or strpos($terms,'Kennedy') !== false or strpos($terms,'New York') !== false or strpos($terms,'USA') !== false) {
+else if (strpos('jfk kennedy new york usa', $terms) !== false) {
 	header("Location: index.php?airport=JFK");
 }
-else if ($terms == "AUH" or strpos($terms,'AUH') !== false or strpos($terms,'Abu Dhabi') !== false or strpos($terms,'United Arab Emirates') !== false) {
+else if (strpos('auh abu dhabi united arab emirates', $terms) !== false) {
 	header("Location: index.php?airport=AUH");
 }
-else if ($terms == "ALA" or strpos($terms,'ALA') !== false or strpos($terms,'Almaty') !== false or strpos($terms,'Kazakhstan') !== false) {
+else if (strpos('ala almaty kazakhstan', $terms) !== false) {
 	header("Location: index.php?airport=ALA");
+}
+else if (strpos('pvg pudong shanghai china', $terms) !== false) {
+	header("Location: index.php?airport=PVG");
+}
+else if (strpos('cdg charles de gaulle paris france', $terms) !== false) {
+	header("Location: index.php?airport=CDG");
+}
+else if (strpos('svo sheremetyevo moscow russia', $terms) !== false) {
+	header("Location: index.php?airport=SVO");
+}
+else if (strpos('lax los angeles usa', $terms) !== false) {
+	header("Location: index.php?airport=LAX");
 }
 else if ($terms == "") {
 	header("Location: index.php");
