@@ -74,50 +74,6 @@ function marker(lat, lng) {
   	flightPath.setMap(map);
 }
 </script>
-<style>
-@font-face { 
-font-family: roboto-condensed; 
-src: url('roboto-condensed.ttf'); 
-} 
-html { 
-  height: 100% 
-}
-body { 
-  height: 100%; 
-  margin: 0; 
-  padding: 0 
-}
-#map-canvas { 
-  width: 100%; 
-  height: 100% 
-}
-#searchbox {
-  width: 400px;
-  height: 150px;
-  position: fixed;
-  top: 10px;
-  left: 10px;
-}
-#searchbox img {
-  width: 140px;
-  position: relative;
-  z-index: 10;
-  border-radius: 75px;
-  box-shadow: 0 0 5px 5px #888;
-}
-#searchbox input {
-  width: 300px;
-  height: 40px;
-  position: fixed;
-  top: 55px;
-  left: 140px;
-  border: 0;
-  font-family: roboto-condensed;
-  padding-left: 15px;
-  font-size: 18px;
-  box-shadow: 0 0 5px 5px #888;
-}
-</style>
 </head>
 <body>
 <div id = "map-canvas"></div><!--
