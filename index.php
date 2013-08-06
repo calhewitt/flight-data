@@ -6,10 +6,22 @@ if (isset($_GET['airport'])) {
 if ($airport == "LHR") {
   $baselat = 51.4775;
   $baselng = 0.4614;
+  $airportname = "London Heathrow";
 }
 else if ($airport == "JFK") {
   $baselat = 40.6397;
   $baselng = -73.7789;
+  $airportname = "JFK New York";
+}
+else if ($airport == "AUH") {
+  $baselat = 24.4281;
+  $baselng = 54.6470;
+  $airportname = "Abu Dhabi International";
+}
+else if ($airport == "ALA") {
+  $baselat = 43.3519;
+  $baselng = 77.0406;
+  $airportname = "Almaty, Kazakhstan";
 }
 else {
   $baselat = 0;
@@ -76,12 +88,13 @@ function marker(lat, lng) {
 </script>
 </head>
 <body>
-<div id = "map-canvas"></div><!--
+<div id = "map-canvas"></div>
 <div id = "searchbox">
+<div id = "current">Currently showing air routes from <?php print $airportname ?></div>
 <img src = "airport-big.png">
-<form>
-  <input type = "text" placeholder = "Enter Airport Name or Code">
+<form method = "get" action = "search.php">
+  <input type = "text" placeholder = "Enter Airport Name or Code" name = "terms">
 </form>
-</div>-->
+</div>
 </body>
 </html>

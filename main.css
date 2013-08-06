@@ -21,22 +21,31 @@ body {
 	top: 10px;
 	left: 10px;
 }
+#current {
+	position: fixed;
+	top: 30px;
+	font-family: roboto-condensed;
+	left: 140px;
+	color: #ffffff;
+	text-shadow: 0px 0px 7px #000000;
+}
 #searchbox img {
-	width: 140px;
+	width: 130px;
 	position: relative;
 	z-index: 10;
 	border-radius: 75px;
-	box-shadow: 0 0 5px 5px #888;
+	margin-top: 5px;
+	box-shadow: 0 0 2px 2px #888;
 }
 #searchbox input {
 	width: 300px;
 	height: 40px;
 	position: fixed;
-	top: 55px;
-	left: 140px;
+	top: 60px;
+	left: 130px;
 	border: 0;
 	font-family: roboto-condensed;
-	padding-left: 15px;
+	padding-left: 25px;
 	font-size: 18px;
 	box-shadow: 0 0 5px 5px #888;
 }

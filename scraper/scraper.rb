@@ -3,7 +3,7 @@ require 'nokogiri'
 require 'json'
 require 'rest-client'
 
-document = open("http://www.ourairports.com/airports/KJFK/routes/")
+document = open("http://www.ourairports.com/airports/UAAA/routes/")
 doc =  Nokogiri::HTML(document, nil, 'UTF-8')
 
 doc.css('dt').each do |link|
