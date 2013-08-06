@@ -5,8 +5,18 @@ if (isset($_GET['airport'])) {
 }
 if ($airport == "LHR") {
   $baselat = 51.4775;
-  $baselng = 0.4614;
+  $baselng = -0.4614;
   $airportname = "London Heathrow";
+}
+else if ($airport == "LGW") {
+  $baselat = 51.1481;
+  $baselng = -0.1903;
+  $airportname = "London Gatwick";
+}
+else if ($airport == "STN") {
+  $baselat = 51.8850;
+  $baselng = 0.2350;
+  $airportname = "London Stanstead";
 }
 else if ($airport == "JFK") {
   $baselat = 40.6397;
@@ -43,6 +53,11 @@ else if ($airport == "LAX") {
   $baselng = -118.4082;
   $airportname = "Los Angeles International";
 }
+else if ($airport == "SYD") {
+  $baselat = -33.9461;
+  $baselng = 151.1772;
+  $airportname = "Sydney Kingsford Smith";
+}
 else {
   $baselat = 0;
   $baselng = 0;
@@ -69,7 +84,7 @@ function initialize() {
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-        marker(<?php print $baselat ?>, <?php print $baselng ?>);				
+        marker(<?php print $baselat; ?>, <?php print $baselng; ?>);				
 		<?php foreach($latlng as $place) {
 			$citylatlng = explode(",", $place);
 			print "marker($citylatlng[0], $citylatlng[1]);";
@@ -115,6 +130,11 @@ function marker(lat, lng) {
 <form method = "get" action = "search.php">
   <input type = "text" placeholder = "Enter Airport Name or Code" name = "terms" autocomplete = "off">
 </form>
+</div>
+<div id = "footer">
+<a href = "https://github.com/calhewitt/flight-data" target = "_blank">View Source on GitHub</a> &bull;
+<a href = "about.php">About this Project</a> &bull;
+<a href = "help.php">Help</a>
 </div>
 </body>
 </html>

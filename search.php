@@ -4,6 +4,12 @@ $terms = strtolower($terms);
 if (strpos('lhr heathrow london uk', $terms) !== false) {
 	header("Location: index.php?airport=LHR");
 }
+if (strpos('lgw london gatwick uk', $terms) !== false) {
+	header("Location: index.php?airport=LGW");
+}
+if (strpos('lst london stanstead uk', $terms) !== false) {
+	header("Location: index.php?airport=LST");
+}
 else if (strpos('jfk kennedy new york usa', $terms) !== false) {
 	header("Location: index.php?airport=JFK");
 }
@@ -24,6 +30,9 @@ else if (strpos('svo sheremetyevo moscow russia', $terms) !== false) {
 }
 else if (strpos('lax los angeles usa', $terms) !== false) {
 	header("Location: index.php?airport=LAX");
+}
+else if (strpos('syd sydney kingsford smith australia', $terms) !== false) {
+	header("Location: index.php?airport=SYD");
 }
 else if ($terms == "") {
 	header("Location: index.php");
