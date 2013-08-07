@@ -134,6 +134,9 @@ input:focus {
 	margin-top: 15px;
 	padding-top: 15px;
 }
+#embed {
+display: none;
+}
 
 .chardinjs-helper-layer.chardinjs-top {
 	padding-top: 0 !important;
@@ -174,7 +177,4 @@ input:focus {
 }
 .chardinjs-tooltiptext {
   font-family: roboto-condensed;
-}
-#embed {
-display: none;
 }
