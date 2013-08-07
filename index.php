@@ -262,7 +262,7 @@ function embed() {
 <div id = "mask"></div>
 <div id = "embed">
 You can embed this map into your own website by copying the code below. Change the width and height to any value you like.
-<textarea>&lt;iframe src = "http://mightyflight.tk/?embed=true&amp;airport=<?php print $airportname; ?>" width = "800" height = "600">&lt;/iframe></textarea>
+<textarea>&lt;iframe src = "http://mightyflight.tk/?embed=true&amp;airport=<?php print $airport; ?>" width = "800" height = "600">&lt;/iframe></textarea>
 </div>
 <div id = "footer">
   <span id = "git" data-intro="This project is open source! Have a look on GitHub." data-position="top">
