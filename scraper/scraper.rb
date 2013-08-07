@@ -3,7 +3,7 @@ require 'nokogiri'
 require 'json'
 require 'rest-client'
 
-document = open("http://www.ourairports.com/airports/EGSS/routes/")
+document = open("http://www.ourairports.com/airports/EGLC/routes/")
 doc =  Nokogiri::HTML(document, nil, 'UTF-8')
 
 doc.css('dt').each do |link|
@@ -14,5 +14,5 @@ doc.css('dt').each do |link|
   puts ","
   puts address["results"][0]["geometry"]["location"]["lng"]   
   puts ";"
-  sleep 0.5
+  sleep 1.5
 end

@@ -13,10 +13,15 @@ else if ($airport == "LGW") {
   $baselng = -0.1903;
   $airportname = "London Gatwick";
 }
-else if ($airport == "STN") {
+else if ($airport == "LST") {
   $baselat = 51.8850;
   $baselng = 0.2350;
   $airportname = "London Stanstead";
+}
+else if ($airport == "LTN") {
+  $baselat = 51.8747;
+  $baselng = -0.3683;
+  $airportname = "London Luton";
 }
 else if ($airport == "JFK") {
   $baselat = 40.6397;
@@ -72,6 +77,7 @@ $latlng = explode(";", $latlng);
 <link rel = "stylesheet" href = "main.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
 <script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;key=AIzaSyBcm2W5wCfL29d2ToSLPv1ZUse4Raon3og"></script>
+<script src="https://raw.github.com/twitter/typeahead.js/master/src/typeahead.js"></script>
 <script>
 var map;
 
@@ -128,7 +134,7 @@ function marker(lat, lng) {
 <div id = "current">Currently showing air routes from <?php print $airportname ?></div>
 <img src = "airport-big.png">
 <form method = "get" action = "search.php">
-  <input type = "text" placeholder = "Enter Airport Name or Code" name = "terms" autocomplete = "off">
+  <input type = "text" placeholder = "Enter Airport Name or Code" name = "terms" id = "searchbox" autocomplete = "off">
 </form>
 </div>
 <div id = "footer">

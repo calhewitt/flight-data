@@ -12,9 +12,9 @@ body {
 	background-color: #2D2D2D;
 }
 #map-canvas { 
+	position: fixed;
 	width: 100%;
 	height: 100%;
-	position: fixed;
 	bottom: 30px;
 }
 #searchbox {
