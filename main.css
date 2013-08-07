@@ -160,4 +160,5 @@ input:focus {
 	padding-top: 4px;
 	margin-left: -2px;
 	line-height: 40px;
+	display: none;
 }

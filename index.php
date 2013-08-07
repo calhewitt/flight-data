@@ -90,7 +90,7 @@ $latlng = explode(";", $latlng);
 <link rel = "stylesheet" href = "main.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
 <script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;key=AIzaSyBcm2W5wCfL29d2ToSLPv1ZUse4Raon3og"></script>
-<script src="https://raw.github.com/twitter/typeahead.js/master/dist/typeahead.js"></script>
+<script src="typeahead.js"></script>
 <script>
 var map;
 
@@ -118,10 +118,6 @@ $(document).ready(function() {
     $("#error").fadeOut("fast");
   });
 
-  $("#selected img, #error img").click(function() {
-    $("#selected").fadeOut("fast");
-    $("#error").fadeOut("fast");
-  });
 });
 
 function initialize() {
@@ -202,9 +198,13 @@ function marker(lat, lng, title, red) {
 function setCurrent(title) {
   $("#selected-text").text(title);
   $("#search").blur();
-  $("#error").fadeOut("fast", function() {
-      $("#selected").fadeIn("fast");  
-  });
+  $("#error").fadeOut("fast");
+  $("#selected").fadeIn("fast");  
+}
+
+function closeDialogs() {
+  $("#selected").fadeOut("fast");
+  $("#error").fadeOut("fast");
 }
 </script>
 </head>
@@ -218,13 +218,13 @@ function setCurrent(title) {
     </form>
     <div id = "selected">
       <span id = "selected-text"></span>
-        <img src = "close.png">
+        <img src = "close.png" onclick = "closeDialogs();">
     </div>
     <?php if (isset($_GET['error'])) {
       if ($_GET['error'] == "notfound") {
         print '<div id = "error">
         <span id = "selected-text">We dont&#39;t seem to have data on that airport - try searching for another one.</span>
-        <img src = "close.png">
+        <img src = "close.png" onclick = "closeDialogs();">
         </div>
         <script>
           window.history.pushState("", "", "/");
