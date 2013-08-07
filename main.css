@@ -59,27 +59,61 @@ body {
 	font-family: roboto-condensed;
 	margin-top: 2px;
 }
-input:focus {outline: none; }
-
-#view-source {
-	position: fixed;
-	height: 37px;
-	padding-top: 13px;
-	width: 300px;
-	top: 50px;
-	right: -80px;
-	background-color: #CD0000;
-	transform:rotate(45deg);
-	-ms-transform:rotate(45deg);
-	-webkit-transform:rotate(45deg); 
-	color: #ffffff;
-	text-align: center;
-	font-family: roboto-condensed;
-	font-size: 18px;
+input:focus {
+	outline: none; 
 }
-#view-source a {
-	color: #ffffff;
-	text-decoration: none;
+#selected {
+	width: 230px;
+	margin-top: -30px;
+	height: 80px;
+	font-family: roboto-condensed;
+	background-color: white;
+	box-shadow: 0 0 5px 5px #888;
+	font-size: 18px;
+	display: none;
+	padding-left: 90px;
+	margin-left: 125px;
+	color: #666666;
+	background-image: url(airport-red-big.png);
+	background-size: 70px;
+	background-repeat: no-repeat;
+	background-position: 5px 5px;
+	line-height: 80px;
+}
+#selected img {
+	width: 30px;
+	height: 30px;
+	box-shadow: none;
+	position: absolute;
+	right: -36px;
+	top: 130px;
+	cursor: pointer;
+}
+#error {
+	width: 270px;
+	margin-top: -30px;
+	height: 65px;
+	padding-top: 15px;
+	padding-right: 40px;
+	font-family: roboto-condensed;
+	background-color: white;
+	box-shadow: 0 0 5px 5px #888;
+	font-size: 18px;
+	padding-left: 10px;
+	margin-left: 125px;
+	color: #666666;
+	text-align: center;
+	border-top: 6px solid #cc1100;
+}
+#error img {
+	width: 30px;
+	height: 30px;
+	box-shadow: none;
+	position: absolute;
+	right: -36px;
+	top: 130px;
+	cursor: pointer;
+	margin-left: 10px;
 }
 #footer {
 	position: fixed;
@@ -108,11 +142,12 @@ input:focus {outline: none; }
 	background-color: white;
 	font-family: roboto-condensed;
 	font-size: 18px;
-	border-bottom: 1px solid #888888;
+	border-bottom: 1px solid #aaaaaa;
 	height: 15px;
 	padding-bottom: 15px;
 	line-height: 15px;
 	margin-top: -3px;
+	color: #444444;
 }
 .tt-suggestion:last-of-type {
 	border: 0;

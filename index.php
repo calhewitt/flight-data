@@ -88,13 +88,20 @@ $(document).ready(function() {
       local: <?php print file_get_contents("autocomplete.json"); ?>
     }
   ]);
-});
-
-$('*').keypress(function (e) {
+  $('*').keypress(function (e) {
   if (e.which == 13) {
     $('#searchform').submit();
-    return false;
-  }
+      return false;
+    }
+  });
+  $("#search").focus(function() {
+    $("#selected").fadeOut("fast");
+    $("#error").fadeOut("fast");
+  });
+  $("#selected img, #error img").click(function() {
+    $("#selected").fadeOut("fast");
+    $("#error").fadeOut("fast");
+  });
 });
 
 function initialize() {
@@ -106,27 +113,45 @@ function initialize() {
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-        marker(<?php print $baselat; ?>, <?php print $baselng; ?>);				
+        marker(<?php print $baselat; ?>, <?php print $baselng; ?>, "<?php print $airportname ?>", true);				
 		<?php foreach($latlng as $place) {
 			$citylatlng = explode(",", $place);
-			print "marker($citylatlng[0], $citylatlng[1]);";
+      if(isset($citylatlng[2])) {
+        print "marker($citylatlng[0], $citylatlng[1], $citylatlng[2]);";
+      }
+      else {
+        print "marker($citylatlng[0], $citylatlng[1]);";
+      }			
 		}
 		?>
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 
 
-function marker(lat, lng) {
-	var image = new google.maps.MarkerImage("airport.png",
+function marker(lat, lng, title, red) {
+  if (title == undefined) {
+    title = "No name specified";
+  }
+	if (red == true) {
+    var image = new google.maps.MarkerImage("airport-red.png",
         null, 
         new google.maps.Point(0,0),
         new google.maps.Point(10, 10)
     );
+  }
+  else {
+    var image = new google.maps.MarkerImage("airport.png",
+        null, 
+        new google.maps.Point(0,0),
+        new google.maps.Point(10, 10)
+    );
+  }
 	var marker = new google.maps.Marker({
 		map:map,
 		draggable:false,
 		position: new google.maps.LatLng(lat, lng),
-		icon: image
+		icon: image,
+    title: title,
 	});
 
 	var flightPlanCoordinates = [
@@ -141,7 +166,19 @@ function marker(lat, lng) {
   	});
 
   	flightPath.setMap(map);
+
+    google.maps.event.addListener(marker, 'click', function() {
+      setCurrent(title);
+    });
 }
+function setCurrent(title) {
+  $("#selected-text").text(title);
+  $("#search").blur();
+  $("#error").fadeOut("fast", function() {
+      $("#selected").fadeIn("fast");  
+  });
+}
+
 </script>
 </head>
 <body>
@@ -152,6 +189,22 @@ function marker(lat, lng) {
     <form method = "get" action = "search.php" id = "searchform">
       <input type = "text" placeholder = "Enter Airport Name or Code" name = "terms" id = "search" autocomplete = "off" x-webkit-speech>
     </form>
+    <div id = "selected">
+      <span id = "selected-text"></span>
+        <img src = "close.png">
+    </div>
+    <?php if (isset($_GET['error'])) {
+      if ($_GET['error'] == "notfound") {
+        print '<div id = "error">
+        <span id = "selected-text">We dont&#39;t seem to have data on that airport - try searching for another one.</span>
+        <img src = "close.png">
+        </div>
+        <script>
+          window.history.pushState("", "", "/");
+        </script>';
+      }
+    }
+    ?>
   </div>
 <div id = "footer">
   <a href = "https://github.com/calhewitt/flight-data" target = "_blank">View Source on GitHub</a> &bull;
