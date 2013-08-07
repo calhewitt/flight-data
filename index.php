@@ -150,7 +150,7 @@ function marker(lat, lng) {
     <div id = "current">Currently showing air routes from <?php print $airportname ?></div>
     <img src = "airport-big.png">
     <form method = "get" action = "search.php" id = "searchform">
-      <input type = "text" placeholder = "Enter Airport Name or Code" name = "terms" id = "search" autocomplete = "off">
+      <input type = "text" placeholder = "Enter Airport Name or Code" name = "terms" id = "search" autocomplete = "off" x-webkit-speech>
     </form>
   </div>
 <div id = "footer">
