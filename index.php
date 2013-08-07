@@ -88,6 +88,7 @@ $latlng = explode(";", $latlng);
 <head>
 <title>Flights</title>
 <link rel = "stylesheet" href = "main.css">
+<link rel = "icon" href = "airport-red.png">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
 <script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;key=AIzaSyBcm2W5wCfL29d2ToSLPv1ZUse4Raon3og"></script>
 <script src="typeahead.js"></script>
