@@ -1,8 +1,18 @@
 <?php
+
 $airport = "LHR";
 if (isset($_GET['airport'])) {
   $airport = $_GET['airport'];
 }
+
+//If the code given is not valid, check if it is a name/city/country
+
+if (file_exists("coordinates/".$airport.".txt") == false) {
+  header("Location: search.php?terms=".$airport);
+}
+
+//Set the name, longditude and latitude of the base airport based on its code
+
 if ($airport == "LHR") {
   $baselat = 51.4775;
   $baselng = -0.4614;
@@ -67,6 +77,9 @@ else {
   $baselat = 0;
   $baselng = 0;
 }
+
+//Open up the file containing coordinates and split it at semicolons
+
 $latlng = file_get_contents("coordinates/".$airport.".txt");
 $latlng = explode(";", $latlng);
 ?>
@@ -82,22 +95,29 @@ $latlng = explode(";", $latlng);
 var map;
 
 $(document).ready(function() {
+
+  //Set up autocomplete for the main search box
   $('#search').typeahead([
     {
       name: 'airports',
       local: <?php print file_get_contents("autocomplete.json"); ?>
     }
   ]);
+
+  //Override tpyeahead's functionality so the search form can be submitted by pressing the enter key
   $('*').keypress(function (e) {
   if (e.which == 13) {
     $('#searchform').submit();
       return false;
     }
   });
+
+  //Make sure any alert boxes are closed when the autocomplete drop down is shown
   $("#search").focus(function() {
     $("#selected").fadeOut("fast");
     $("#error").fadeOut("fast");
   });
+
   $("#selected img, #error img").click(function() {
     $("#selected").fadeOut("fast");
     $("#error").fadeOut("fast");
@@ -105,15 +125,17 @@ $(document).ready(function() {
 });
 
 function initialize() {
-		geocoder = new google.maps.Geocoder();
-        var mapOptions = {
-          center: new google.maps.LatLng(35, 0.4614),
-          zoom: 3,
+    //Initially set up map
+    var mapOptions = {
+      center: new google.maps.LatLng(35, 0.4614),
+      zoom: 3,
 		  disableDefaultUI: true,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-        marker(<?php print $baselat; ?>, <?php print $baselng; ?>, "<?php print $airportname ?>", true);				
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+    //Place orange icon on base airport
+    marker(<?php print $baselat; ?>, <?php print $baselng; ?>, "<?php print $airportname ?>", true);				
 		<?php foreach($latlng as $place) {
 			$citylatlng = explode(",", $place);
       if(isset($citylatlng[2])) {
@@ -127,11 +149,13 @@ function initialize() {
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 
-
+//Function to add markers to the map
 function marker(lat, lng, title, red) {
   if (title == undefined) {
     title = "No name specified";
   }
+
+  //If the airport is the base, use the orange icon instead of the default
 	if (red == true) {
     var image = new google.maps.MarkerImage("airport-red.png",
         null, 
@@ -154,6 +178,7 @@ function marker(lat, lng, title, red) {
     title: title,
 	});
 
+  //Draw a line between the marker position and the base airport
 	var flightPlanCoordinates = [
       new google.maps.LatLng(<?php print $baselat ?>, <?php print $baselng ?>),
       new google.maps.LatLng(lat, lng)
@@ -167,10 +192,13 @@ function marker(lat, lng, title, red) {
 
   	flightPath.setMap(map);
 
+    //Handle markers being clicked
     google.maps.event.addListener(marker, 'click', function() {
       setCurrent(title);
     });
 }
+
+//Show box below search bar and fill it with the clicked airport's name
 function setCurrent(title) {
   $("#selected-text").text(title);
   $("#search").blur();
@@ -178,7 +206,6 @@ function setCurrent(title) {
       $("#selected").fadeIn("fast");  
   });
 }
-
 </script>
 </head>
 <body>

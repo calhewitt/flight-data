@@ -1,4 +1,7 @@
 <?php
+
+//See if the search terms entered match the keywords of any airport
+//If so, redirect to the home page with the correct parameters
 $terms = $_GET['terms'];
 $terms = strtolower($terms);
 if (strpos('lhr london heathrow uk', $terms) !== false) {
