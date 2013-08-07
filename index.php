@@ -213,8 +213,8 @@ function setCurrent(title) {
   <div id = "searchbox">
     <div id = "current">Currently showing air routes from <?php print $airportname ?></div>
     <img src = "airport-big.png">
-    <form method = "get" action = "search.php" id = "searchform">
-      <input type = "text" placeholder = "Enter Airport Name or Code" name = "terms" id = "search" autocomplete = "off" x-webkit-speech>
+    <form method = "get" action = "search.php" id = "searchform" autocomplete = "off">
+      <input type="text" placeholder="Enter Airport Name or Code" name="terms" id="search" x-webkit-speech onwebkitspeechchange="$('#searchform').submit();">
     </form>
     <div id = "selected">
       <span id = "selected-text"></span>
