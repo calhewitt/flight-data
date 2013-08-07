@@ -1,6 +1,6 @@
 @font-face { 
 font-family: roboto-condensed; 
-src: url('roboto-condensed.ttf'); 
+src: url('roboto-condensed.ttf'), url('roboto-condensed.eot');; 
 } 
 html { 
 	height: 100% 
