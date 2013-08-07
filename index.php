@@ -1,5 +1,13 @@
 <?php
 
+//Load different code if the app is being embeded
+$stylesheetcode = '<link rel = "stylesheet" href = "main.css">';
+if(isset($_GET['embed'])) {
+  if ($_GET['embed'] == "true") {
+      $stylesheetcode = '<link rel = "stylesheet" href = "nocontrols.css">';
+  }
+}
+
 $airport = "LHR";
 if (isset($_GET['airport'])) {
   $airport = $_GET['airport'];
@@ -87,7 +95,7 @@ $latlng = explode(";", $latlng);
 <html>
 <head>
 <title>Flights</title>
-<link rel = "stylesheet" href = "main.css">
+<?php print $stylesheetcode; ?>
 <link rel = "stylesheet" href = "chardin/chardin.css">
 <link rel = "icon" href = "airport-red.png">
 <script src = "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
@@ -120,6 +128,11 @@ $(document).ready(function() {
     $("#selected").fadeOut("fast");
     $("#error").fadeOut("fast");
   });
+
+  $("#mask").click(function() {
+    $("#mask").fadeOut();
+    $("#embed").fadeOut();
+  });  
 
 });
 
@@ -213,12 +226,18 @@ function closeDialogs() {
 function help() {
   $("body").chardinJs('toggle'); 
 }
+
+function embed() {
+  $("#mask").fadeIn();
+  $("#embed").fadeIn();
+  $("#embed textarea").select();
+}
 </script>
 </head>
 <body>
   <div id = "map-canvas"></div>
   <div id = "searchbox" data-intro="Type in the name of an airport, city or country and press enter to see all of the flight routes from it." data-position="right" >
-    <div id = "current">Currently showing air routes from <?php print $airportname ?></div>
+    <div id = "current">Currently showing air routes from <?php print $airport ?></div>
     <img src = "airport-big.png">
     <form method = "get" action = "search.php" id = "searchform" autocomplete = "off">
       <input type="text" placeholder="Enter Airport Name or Code" name="terms" id="search" x-webkit-speech onwebkitspeechchange="$('#searchform').submit();">
@@ -240,10 +259,15 @@ function help() {
     }
     ?>
   </div>
+<div id = "mask"></div>
+<div id = "embed">
+You can embed this map into your own website by copying the code below. Change the width and height to any value you like.
+<textarea>&lt;iframe src = "http://mightyflight.tk/?embed=true&amp;airport=<?php print $airportname; ?>" width = "800" height = "600">&lt;/iframe></textarea>
+</div>
 <div id = "footer">
   <span id = "git" data-intro="This project is open source! Have a look on GitHub." data-position="top">
   <a href = "https://github.com/calhewitt/flight-data" target = "_blank">View Source on GitHub</a></span> &bull;
-  <a href = "about.php">About this Project</a> &bull;
+  <a href = "#" onclick = "embed();">Embed</a> &bull;
   <a href = "#" onclick = "help();">Help</a>
 </div>
 </body>
