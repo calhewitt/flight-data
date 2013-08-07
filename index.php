@@ -134,7 +134,7 @@ function initialize() {
     //Place orange icon on base airport
     marker(<?php print $baselat; ?>, <?php print $baselng; ?>, "<?php print $airportname ?>", true);				
 		<?php foreach($latlng as $place) {
-			$citylatlng = explode(",", $place);
+			$citylatlng = explode(",", $place, 3);
       if(isset($citylatlng[2])) {
         print "marker($citylatlng[0], $citylatlng[1], $citylatlng[2]);";
       }
