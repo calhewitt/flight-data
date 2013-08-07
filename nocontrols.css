@@ -175,3 +175,6 @@ input:focus {
 .chardinjs-tooltiptext {
   font-family: roboto-condensed;
 }
+#embed {
+display: none;
+}
