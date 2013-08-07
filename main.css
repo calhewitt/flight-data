@@ -20,7 +20,7 @@ body {
 #searchbox {
 	width: 400px;
 	height: 150px;
-	position: fixed;
+	position: absolute;
 	top: 10px;
 	left: 10px;
 }
@@ -40,18 +40,27 @@ body {
 	margin-top: 5px;
 	box-shadow: 0 0 2px 2px #888;
 }
-#searchbox input {
+#searchbox form {
 	width: 300px;
 	height: 40px;
-	position: fixed;
-	top: 60px;
-	left: 130px;
+	position: absolute;
+	top: 53px;
+	left: 120px;
 	border: 0;
-	font-family: roboto-condensed;
 	padding-left: 25px;
-	font-size: 18px;
 	box-shadow: 0 0 5px 5px #888;
+	background-color: white;
 }
+#search {
+	width: 300px;
+	height: 35px;
+	border: none;
+	font-size: 18px;
+	font-family: roboto-condensed;
+	margin-top: 2px;
+}
+input:focus {outline: none; }
+
 #view-source {
 	position: fixed;
 	height: 37px;
@@ -85,4 +94,35 @@ body {
 #footer a {
 	color: #ffffff;
 	text-decoration: none;
+}
+.tt-dropdown-menu {
+	background-color: white;
+	width: 280px;
+	margin-top: 20px;
+	margin-left: -20px;
+	box-shadow: 0 0 5px 5px #888;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.tt-suggestion {
+	background-color: white;
+	font-family: roboto-condensed;
+	font-size: 18px;
+	border-bottom: 1px solid #888888;
+	height: 15px;
+	padding-bottom: 15px;
+	line-height: 15px;
+	margin-top: -3px;
+}
+.tt-suggestion:last-of-type {
+	border: 0;
+}
+.tt-hint {
+	font-family: roboto-condensed;
+	font-size: 18px;
+	height: 30px;
+	margin-top: 0px;
+	padding-top: 4px;
+	margin-left: -2px;
+	line-height: 40px;
 }

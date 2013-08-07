@@ -77,9 +77,25 @@ $latlng = explode(";", $latlng);
 <link rel = "stylesheet" href = "main.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
 <script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;key=AIzaSyBcm2W5wCfL29d2ToSLPv1ZUse4Raon3og"></script>
-<script src="https://raw.github.com/twitter/typeahead.js/master/src/typeahead.js"></script>
+<script src="https://raw.github.com/twitter/typeahead.js/master/dist/typeahead.js"></script>
 <script>
 var map;
+
+$(document).ready(function() {
+  $('#search').typeahead([
+    {
+      name: 'airports',
+      local: <?php print file_get_contents("autocomplete.json"); ?>
+    }
+  ]);
+});
+
+$('*').keypress(function (e) {
+  if (e.which == 13) {
+    $('#searchform').submit();
+    return false;
+  }
+});
 
 function initialize() {
 		geocoder = new google.maps.Geocoder();
@@ -129,18 +145,18 @@ function marker(lat, lng) {
 </script>
 </head>
 <body>
-<div id = "map-canvas"></div>
-<div id = "searchbox">
-<div id = "current">Currently showing air routes from <?php print $airportname ?></div>
-<img src = "airport-big.png">
-<form method = "get" action = "search.php">
-  <input type = "text" placeholder = "Enter Airport Name or Code" name = "terms" id = "searchbox" autocomplete = "off">
-</form>
-</div>
+  <div id = "map-canvas"></div>
+  <div id = "searchbox">
+    <div id = "current">Currently showing air routes from <?php print $airportname ?></div>
+    <img src = "airport-big.png">
+    <form method = "get" action = "search.php" id = "searchform">
+      <input type = "text" placeholder = "Enter Airport Name or Code" name = "terms" id = "search" autocomplete = "off">
+    </form>
+  </div>
 <div id = "footer">
-<a href = "https://github.com/calhewitt/flight-data" target = "_blank">View Source on GitHub</a> &bull;
-<a href = "about.php">About this Project</a> &bull;
-<a href = "help.php">Help</a>
+  <a href = "https://github.com/calhewitt/flight-data" target = "_blank">View Source on GitHub</a> &bull;
+  <a href = "about.php">About this Project</a> &bull;
+  <a href = "help.php">Help</a>
 </div>
 </body>
 </html>
