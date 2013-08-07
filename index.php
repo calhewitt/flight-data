@@ -88,10 +88,12 @@ $latlng = explode(";", $latlng);
 <head>
 <title>Flights</title>
 <link rel = "stylesheet" href = "main.css">
+<link rel = "stylesheet" href = "chardin/chardin.css">
 <link rel = "icon" href = "airport-red.png">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
-<script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;key=AIzaSyBcm2W5wCfL29d2ToSLPv1ZUse4Raon3og"></script>
-<script src="typeahead.js"></script>
+<script src = "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+<script src = "https://maps.googleapis.com/maps/api/js?sensor=false&amp;key=AIzaSyBcm2W5wCfL29d2ToSLPv1ZUse4Raon3og"></script>
+<script src = "typeahead.js"></script>
+<script src = "chardin/chardin.min.js"></script>
 <script>
 var map;
 
@@ -207,11 +209,15 @@ function closeDialogs() {
   $("#selected").fadeOut("fast");
   $("#error").fadeOut("fast");
 }
+
+function help() {
+  $("body").chardinJs('toggle'); 
+}
 </script>
 </head>
 <body>
   <div id = "map-canvas"></div>
-  <div id = "searchbox">
+  <div id = "searchbox" data-intro="Type in the name of an airport, city or country and press enter to see all of the flight routes from it." data-position="right" >
     <div id = "current">Currently showing air routes from <?php print $airportname ?></div>
     <img src = "airport-big.png">
     <form method = "get" action = "search.php" id = "searchform" autocomplete = "off">
@@ -235,9 +241,10 @@ function closeDialogs() {
     ?>
   </div>
 <div id = "footer">
-  <a href = "https://github.com/calhewitt/flight-data" target = "_blank">View Source on GitHub</a> &bull;
+  <span id = "git" data-intro="This project is open source! Have a look on GitHub." data-position="top">
+  <a href = "https://github.com/calhewitt/flight-data" target = "_blank">View Source on GitHub</a></span> &bull;
   <a href = "about.php">About this Project</a> &bull;
-  <a href = "help.php">Help</a>
+  <a href = "#" onclick = "help();">Help</a>
 </div>
 </body>
 </html>

@@ -18,7 +18,7 @@ body {
 	bottom: 30px;
 }
 #searchbox {
-	width: 400px;
+	width: 500px;
 	height: 150px;
 	position: absolute;
 	top: 10px;
@@ -85,7 +85,7 @@ input:focus {
 	height: 30px;
 	box-shadow: none;
 	position: absolute;
-	right: -36px;
+	left: 410px;
 	top: 130px;
 	cursor: pointer;
 }
@@ -110,10 +110,9 @@ input:focus {
 	height: 30px;
 	box-shadow: none;
 	position: absolute;
-	right: -36px;
-	top: 130px;
+	left: 410px;
+	top: 135px;
 	cursor: pointer;
-	margin-left: 10px;
 }
 #footer {
 	position: fixed;
@@ -129,6 +128,15 @@ input:focus {
 	color: #ffffff;
 	text-decoration: none;
 }
+#git {
+	margin-top: 15px;
+	padding-top: 15px;
+}
+
+.chardinjs-helper-layer.chardinjs-top {
+	padding-top: 0 !important;
+}
+
 .tt-dropdown-menu {
 	background-color: white;
 	width: 280px;
@@ -161,4 +169,7 @@ input:focus {
 	margin-left: -2px;
 	line-height: 40px;
 	display: none;
+}
+.chardinjs-tooltiptext {
+  font-family: roboto-condensed;
 }
