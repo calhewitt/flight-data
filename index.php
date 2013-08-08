@@ -204,7 +204,7 @@ $(document).ready(function() {
 function initialize() {
     //Initially set up map
     var mapOptions = {
-      center: new google.maps.LatLng(35, 0.4614),
+      center: new google.maps.LatLng(35, <?php print $baselng; ?>),
       zoom: 3,
 		  disableDefaultUI: true,
       mapTypeId: google.maps.MapTypeId.ROADMAP
