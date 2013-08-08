@@ -80,6 +80,9 @@ input:focus {
 	background-position: 5px 5px;
 	line-height: 80px;
 }
+#selected-text {
+	cursor: pointer;
+}
 #selected img {
 	width: 30px;
 	height: 30px;
@@ -208,4 +211,15 @@ input:focus {
 	background-color: #dddddd;
 	border: none;
 	resize: none;
+}
+#wikipedia-link {
+	background-image: url(wikipedia.png);
+	background-size: 30px 30px;
+	display: block;
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	top: 135px;
+	left: 375px;
+	cursor: pointer;
 }

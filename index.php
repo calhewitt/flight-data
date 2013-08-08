@@ -150,6 +150,7 @@ $latlng = explode(";", $latlng);
 <script src = "chardin/chardin.min.js"></script>
 <script>
 var map;
+var selected;
 
 $(document).ready(function() {
 
@@ -178,7 +179,15 @@ $(document).ready(function() {
   $("#mask").click(function() {
     $("#mask").fadeOut();
     $("#embed").fadeOut();
-  });  
+  }); 
+
+  $("#selected-text").click(function() {
+    window.location = "/search.php?terms=" + selected;
+  });   
+
+  $("#wikipedia-link").click(function() {
+    window.open("http://en.wikipedia.org/wiki/" + selected);
+  });   
 
 });
 
@@ -261,7 +270,8 @@ function setCurrent(title) {
   $("#selected-text").text(title);
   $("#search").blur();
   $("#error").fadeOut("fast");
-  $("#selected").fadeIn("fast");  
+  $("#selected").fadeIn("fast"); 
+  selected = title; 
 }
 
 function closeDialogs() {
@@ -290,7 +300,8 @@ function embed() {
     </form>
     <div id = "selected">
       <span id = "selected-text"></span>
-        <img src = "close.png" onclick = "closeDialogs();">
+      <div id = "wikipedia-link"></div>
+      <img src = "close.png" onclick = "closeDialogs();">
     </div>
     <?php if (isset($_GET['error'])) {
       if ($_GET['error'] == "notfound") {
