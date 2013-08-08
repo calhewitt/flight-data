@@ -1,7 +1,15 @@
 MightyFlight
 ============
 
-MightyFlight is an open source, open data visualtisation of the places you can fly to from any airport in the world. The project is hosted at http://mightflight.tk/ and this repository contains all of the files needed for the full app to run. Once downloaded and installed on a server running PHP it will work out of the box, without any need for databases etc...
+MightyFlight is an open source, open data visualtisation of the places you can fly to from any airport in the world. The project is hosted at http://mightyflight.tk/ and this repository contains all of the files needed for the full app to run. Once downloaded and installed on a server running PHP it will work out of the box, without any need for databases etc...
+
+Plugins
+-------
+
+The following JavaScript plugins are included in the repo which are used in the app
+* Chardin.js - Help overlays
+*Typeahead.js - Autocomplete
+*jQuery - Main Framework
 
 Scraper.rb
 ----------
