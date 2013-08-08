@@ -153,11 +153,13 @@ var selected;
 
 $(document).ready(function() {
 
+  window.history.pushState("", "", "/?airport=<?php print $airport; ?>");
+
   //If the user is at the start of a session, show the intro
 
   <?php if (!isset($_GET['intro'])) {
     print "intro();";
-  }?>
+  };?>
 
   //Set up autocomplete for the main search box
   $('#search').typeahead([

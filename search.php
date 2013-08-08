@@ -58,5 +58,5 @@ else if (strpos('vtbs suvarnabhumi thailand', $terms) !== false) {
 else if ($terms == "") {
 	header("Location: /");
 }
-else header("Location: /?error=notfound");;
+else header("Location: /?error=notfound&intro=false");;
 ?>
