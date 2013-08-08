@@ -1,7 +1,15 @@
 @font-face { 
 font-family: roboto-condensed; 
-src: url('roboto-condensed.ttf'), url('roboto-condensed.eot');; 
+src: url('font/roboto-condensed.ttf'), url('font/roboto-condensed.eot');; 
 } 
+@font-face { 
+font-family: league-gothic; 
+src: url('font/league-gothic.ttf'), url('font/league-gothic.eot');; 
+}
+@font-face { 
+font-family: bebas; 
+src: url('font/bebas-neue.ttf'), url('font/bebas-neue.eot');; 
+}
 html { 
 	height: 100% 
 }
@@ -222,4 +230,39 @@ input:focus {
 	top: 135px;
 	left: 375px;
 	cursor: pointer;
+}
+#intro {
+	color: white;
+	display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 101;
+	margin-left: -400px;
+	width: 800px;
+	margin-top: -200px;
+	text-align: center;
+	font-family: bebas;
+	font-size: 30px;
+}
+#intro-title {
+	font-family: league-gothic;
+	font-size: 200px;
+	text-transform: uppercase;
+	margin-bottom: -10px;
+}
+#close-intro {
+	width: 150px;
+	height: 30px;
+	padding-top: 6px;
+	margin-top: 35px;
+	background-color: #0276FD;
+	font-family: bebas;
+	color: white;
+	font-size: 22px;
+	margin-left: 325px;
+	cursor: pointer;
+}
+#close-intro:hover {
+	background-color: #1D7CF2;
 }

@@ -132,7 +132,6 @@ else {
 
 $latlng = file_get_contents("coordinates/".$airport.".txt");
 
-
 $latlng = substr($latlng, 3, -2);
 $latlng = explode(";", $latlng);
 ?>
@@ -153,6 +152,12 @@ var map;
 var selected;
 
 $(document).ready(function() {
+
+  //If the user is at the start of a session, show the intro
+
+  <?php if (!isset($_GET['intro'])) {
+    print "intro();";
+  }?>
 
   //Set up autocomplete for the main search box
   $('#search').typeahead([
@@ -177,8 +182,7 @@ $(document).ready(function() {
   });
 
   $("#mask").click(function() {
-    $("#mask").fadeOut();
-    $("#embed").fadeOut();
+     closeMask();
   }); 
 
   $("#selected-text").click(function() {
@@ -187,6 +191,10 @@ $(document).ready(function() {
 
   $("#wikipedia-link").click(function() {
     window.open("http://en.wikipedia.org/wiki/" + selected);
+  }); 
+
+  $("#close-intro").click(function() {
+    closeMask();
   });   
 
 });
@@ -288,6 +296,27 @@ function embed() {
   $("#embed").fadeIn();
   $("#embed textarea").select();
 }
+
+function intro() {
+  $("#mask").show();
+  $("#intro").show();
+  $("#searchbox").hide();
+  $("#footer").hide();
+  $("#map-canvas").css("bottom", "0px");
+}
+
+function closeMask() {
+  $("#mask").fadeOut();
+  $("#embed").fadeOut();
+  $("#intro").fadeOut();
+  $("#map-canvas").animate({
+    bottom: "30px",
+  }, 500, function() {
+    $("#footer").fadeIn("slow");
+    $("#searchbox").fadeIn("slow");
+  });
+
+}
 </script>
 </head>
 <body>
@@ -320,6 +349,10 @@ function embed() {
 <div id = "embed">
 You can embed this map into your own website by copying the code below. Change the width and height to any value you like.
 <textarea>&lt;iframe src = "http://mightyflight.tk/?embed=true&amp;airport=<?php print $airport; ?>" width = "800" height = "600">&lt;/iframe></textarea>
+</div>
+<div id = "intro"><div id = "intro-title">MightyFLight</div>
+Is an open data visualisation of the places you can fly to from any airport in the world. Press launch and start exploring.
+<div id = "close-intro">launch</div>
 </div>
 <div id = "footer">
   <span id = "git" data-intro="This project is open source! Have a look on GitHub." data-position="top">
