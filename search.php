@@ -31,14 +31,29 @@ else if (strpos('pvg pudong shanghai china', $terms) !== false) {
 else if (strpos('cdg charles de gaulle paris france', $terms) !== false) {
 	header("Location: /?airport=CDG");
 }
-else if (strpos('svo sheremetyevo moscow russia', $terms) !== false) {
-	header("Location: /?airport=SVO");
-}
 else if (strpos('lax los angeles usa', $terms) !== false) {
 	header("Location: /?airport=LAX");
 }
 else if (strpos('syd sydney kingsford smith australia', $terms) !== false) {
 	header("Location: /?airport=SYD");
+}
+else if (strpos('ebbr brussels belgium', $terms) !== false) {
+	header("Location: /?airport=EBBR");
+}
+else if (strpos('eddf frankfurt germany', $terms) !== false) {
+	header("Location: /?airport=EDDF");
+}
+else if (strpos('egbb birmingham uk', $terms) !== false) {
+	header("Location: /?airport=EGBB");
+}
+else if (strpos('lfbd bordeaux mérignac bordeaux-merignac france', $terms) !== false) {
+	header("Location: /?airport=LFBD");
+}
+else if (strpos('utaa ashgabat turkmenistan', $terms) !== false) {
+	header("Location: /?airport=UTAA");
+}
+else if (strpos('vtbs suvarnabhumi thailand', $terms) !== false) {
+	header("Location: /?airport=VTBS");
 }
 else if ($terms == "") {
 	header("Location: /");

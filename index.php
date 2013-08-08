@@ -25,61 +25,103 @@ if ($airport == "LHR") {
   $baselat = 51.4775;
   $baselng = -0.4614;
   $airportname = "London Heathrow";
+  $city = "London";
 }
 else if ($airport == "LGW") {
   $baselat = 51.1481;
   $baselng = -0.1903;
   $airportname = "London Gatwick";
+  $city = "London";
 }
 else if ($airport == "LST") {
   $baselat = 51.8850;
   $baselng = 0.2350;
   $airportname = "London Stanstead";
+  $city = "London";
 }
 else if ($airport == "LTN") {
   $baselat = 51.8747;
   $baselng = -0.3683;
   $airportname = "London Luton";
+  $city = "London";
 }
 else if ($airport == "JFK") {
   $baselat = 40.6397;
   $baselng = -73.7789;
   $airportname = "JFK New York";
+  $city = "New York";
 }
 else if ($airport == "AUH") {
   $baselat = 24.4281;
   $baselng = 54.6470;
   $airportname = "Abu Dhabi International";
+  $city = "Abu Dhabi";
 }
 else if ($airport == "ALA") {
   $baselat = 43.3519;
   $baselng = 77.0406;
   $airportname = "Almaty, Kazakhstan";
+  $city = "Almaty";
 }
 else if ($airport == "PVG") {
   $baselat = 31.1433;
   $baselng = 121.8053;
   $airportname = "Shanghai (Pudong)";
+  $city = "Shanghai";
 }
 else if ($airport == "CDG") {
   $baselat = 49.0128;
   $baselng = 2.5500;
   $airportname = "Charles de Gaulle, Paris";
-}
-else if ($airport == "SVO") {
-  $baselat = 55.9728;
-  $baselng = 37.4147;
-  $airportname = "Sheremetyevo Airport, Moscow";
+  $city = "Paris";
 }
 else if ($airport == "LAX") {
   $baselat = 33.9471;
   $baselng = -118.4082;
   $airportname = "Los Angeles International";
+  $city = "Los Angeles";
 }
 else if ($airport == "SYD") {
   $baselat = -33.9461;
   $baselng = 151.1772;
   $airportname = "Sydney Kingsford Smith";
+  $city = "Sydney";
+}
+else if ($airport == "EBBR") {
+  $baselat = 50.9014;
+  $baselng = 4.4844;
+  $airportname = "Brussels";
+  $city = "Brussels";
+}
+else if ($airport == "EDDF") {
+  $baselat = 50.0264;
+  $baselng = 8.5431;
+  $airportname = "Frankfurt-am-main";
+  $city = "Frankfurt";
+}
+else if ($airport == "EGBB") {
+  $baselat = 52.4800;
+  $baselng = -1.9100;
+  $airportname = "Birmingham Internaitional";
+  $city = "Birmingham";
+}
+else if ($airport == "LFBD") {
+  $baselat = 44.8283;
+  $baselng = -0.7156;
+  $airportname = "Bordeaux-Mérignac";
+  $city = "Bordeaux";
+}
+else if ($airport == "UTAA") {
+  $baselat = 37.9667;
+  $baselng = 58.3333;
+  $airportname = "Ashgabat International";
+  $city = "Ashgabat";
+}
+else if ($airport == "VTBS") {
+  $baselat = 13.6925;
+  $baselng = 100.7509;
+  $airportname = "Suvarnabhumi Airport";
+  $city = "Bangkok";
 }
 else {
   $baselat = 0;
@@ -89,12 +131,16 @@ else {
 //Open up the file containing coordinates and split it at semicolons
 
 $latlng = file_get_contents("coordinates/".$airport.".txt");
+
+
+$latlng = substr($latlng, 3, -2);
 $latlng = explode(";", $latlng);
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 <title>Flights</title>
+<meta charset=utf-8>
 <?php print $stylesheetcode; ?>
 <link rel = "stylesheet" href = "chardin/chardin.css">
 <link rel = "icon" href = "airport-red.png">
@@ -147,11 +193,11 @@ function initialize() {
     map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
     //Place orange icon on base airport
-    marker(<?php print $baselat; ?>, <?php print $baselng; ?>, "<?php print $airportname ?>", true);				
+    marker(<?php print $baselat; ?>, <?php print $baselng; ?>, "<?php print $city; ?>", true);				
 		<?php foreach($latlng as $place) {
-			$citylatlng = explode(",", $place, 3);
+			$citylatlng = explode(",", $place);
       if(isset($citylatlng[2])) {
-        print "marker($citylatlng[0], $citylatlng[1], $citylatlng[2]);";
+        print 'marker('.$citylatlng[0].', '.$citylatlng[1].', "'.$citylatlng[2].'", false);';
       }
       else {
         print "marker($citylatlng[0], $citylatlng[1]);";
@@ -237,7 +283,7 @@ function embed() {
 <body>
   <div id = "map-canvas"></div>
   <div id = "searchbox" data-intro="Type in the name of an airport, city or country and press enter to see all of the flight routes from it." data-position="right" >
-    <div id = "current">Currently showing air routes from <?php print $airport ?></div>
+    <div id = "current">Currently showing air routes from <?php print $airportname ?></div>
     <img src = "airport-big.png">
     <form method = "get" action = "search.php" id = "searchform" autocomplete = "off">
       <input type="text" placeholder="Enter Airport Name or Code" name="terms" id="search" x-webkit-speech onwebkitspeechchange="$('#searchform').submit();">
