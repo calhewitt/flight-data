@@ -4,7 +4,10 @@
 //If so, redirect to the home page with the correct parameters
 $terms = $_GET['terms'];
 $terms = strtolower($terms);
-if (strpos('lhr london heathrow uk', $terms) !== false) {
+if ($terms == "" or !isset($terms)) {
+	header("Location: /?ariport=LHR&intro=false");
+}
+else if (strpos('lhr london heathrow uk', $terms) !== false) {
 	header("Location: /?airport=LHR&intro=false");
 }
 else if (strpos('lgw london gatwick uk', $terms) !== false) {
@@ -54,9 +57,6 @@ else if (strpos('utaa ashgabat turkmenistan', $terms) !== false) {
 }
 else if (strpos('vtbs suvarnabhumi thailand', $terms) !== false) {
 	header("Location: /?airport=VTBS&intro=false");
-}
-else if ($terms == "") {
-	header("Location: /");
 }
 else header("Location: /?error=notfound&intro=false");;
 ?>
