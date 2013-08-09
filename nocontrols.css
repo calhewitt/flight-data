@@ -178,3 +178,6 @@ display: none;
 .chardinjs-tooltiptext {
   font-family: roboto-condensed;
 }
+#intro {
+	display: none;
+}

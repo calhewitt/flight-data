@@ -195,6 +195,10 @@ $(document).ready(function() {
     window.open("http://en.wikipedia.org/wiki/" + selected);
   }); 
 
+  $("#walpha-link").click(function() {
+    window.open("http://www.wolframalpha.com/input/?i=" + selected);
+  }); 
+
   $("#close-intro").click(function() {
     closeMask();
   });   
@@ -331,6 +335,7 @@ function closeMask() {
     </form>
     <div id = "selected">
       <span id = "selected-text"></span>
+      <div id = "walpha-link"></div>
       <div id = "wikipedia-link"></div>
       <img src = "close.png" onclick = "closeDialogs();">
     </div>

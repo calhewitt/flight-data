@@ -231,6 +231,17 @@ input:focus {
 	left: 375px;
 	cursor: pointer;
 }
+#walpha-link {
+	background-image: url(walpha.png);
+	background-size: 30px 30px;
+	display: block;
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	top: 135px;
+	left: 335px;
+	cursor: pointer;
+}
 #intro {
 	color: white;
 	display: none;
