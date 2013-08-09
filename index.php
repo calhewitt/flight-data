@@ -2,9 +2,11 @@
 
 //Load different code if the app is being embeded
 $stylesheetcode = '<link rel = "stylesheet" href = "main.css">';
+$embed = false;
 if(isset($_GET['embed'])) {
   if ($_GET['embed'] == "true") {
       $stylesheetcode = '<link rel = "stylesheet" href = "nocontrols.css">';
+      $embed = true;
   }
 }
 
@@ -157,9 +159,13 @@ $(document).ready(function() {
 
   //If the user is at the start of a session, show the intro
 
-  <?php if (!isset($_GET['intro'])) {
+  <?php if (!isset($_GET['intro']) and $embed == false) {
     print "intro();";
-  };?>
+  }
+  if (isset($_GET['selected'])) {
+    print "setCurrent('".$_GET['selected']."')";
+  }
+  ?>
 
   //Set up autocomplete for the main search box
   $('#search').typeahead([
@@ -286,11 +292,13 @@ function setCurrent(title) {
   $("#error").fadeOut("fast");
   $("#selected").fadeIn("fast"); 
   selected = title; 
+  window.history.pushState("", "", "/?airport=<?php print $airport; ?>&selected=" + title);
 }
 
 function closeDialogs() {
   $("#selected").fadeOut("fast");
   $("#error").fadeOut("fast");
+  window.history.pushState("", "", "/?airport=<?php print $airport; ?>");
 }
 
 function help() {
