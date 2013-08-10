@@ -1,3 +1,10 @@
+<MightyFlight>
+<BaseLat>-33.9461</BaseLat>
+<BaseLng>151.1772</BaseLng>
+<AirportName>Sydney Kingsford Smith</AirportName>
+<CityName>Sydney</CityName>
+<Keywords>syd sydney kingsford smith australia</Keywords>
+<Destinations>
 24.4666667,54.3666667,Abu Dhabi;
 -34.92862119999999,138.5999594,Adelaide;
 -36.0807785,146.9164693,Albury;
@@ -81,3 +88,5 @@
 -35.1155492,147.3694772,Wagga Wagga;
 -41.2864603,174.776236,Wellington;
 -32.8079832,151.8509216,Williamtown;
+</Destinations>
+</MightyFlight>

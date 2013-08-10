@@ -1,3 +1,10 @@
+<MightyFlight>
+<BaseLat>37.9667</BaseLat>
+<BaseLng>58.3333</BaseLng>
+<AirportName>Ashgabat International</AirportName>
+<CityName>Ashgabat</CityName>
+<Keywords>utaa ashgabat turkmenistan</Keywords>
+<Destinations>
 24.4666667,54.3666667,Abu Dhabi;
 31.6339793,74.8722642,Amritsar;
 40.4349504,49.8676232,Baku;
@@ -12,3 +19,5 @@
 28.635308,77.22496,New Delhi;
 41.26666669999999,69.21666669999999,Tashkent;
 43.825645,87.616823,Ürümqi;
+</Destinations>
+</MightyFlight>

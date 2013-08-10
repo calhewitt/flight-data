@@ -1,3 +1,10 @@
+<MightyFlight>
+<BaseLat>40.6397</BaseLat>
+<BaseLng>-73.7789</BaseLng>
+<AirportName>JFK New York</AirportName>
+<CityName>New York</CityName>
+<Keywords>jfk kennedy new york usa</Keywords>
+<Destinations>
 24.4666667,54.3666667,Abu Dhabi;
 9.066666699999999,7.483333300000001,Abuja;
 5.5557169,-0.196306,Accra;
@@ -161,3 +168,5 @@
 38.90723089999999,-77.0364641,Washington;
 26.7153424,-80.0533746,West Palm Beach;
 47.3686498,8.539182499999999,Zurich;
+</Destinations>
+</MightyFlight>

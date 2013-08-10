@@ -1,3 +1,10 @@
+<MightyFlight>
+<BaseLat>24.4281</BaseLat>
+<BaseLng>54.6470</BaseLng>
+<AirportName>Abu Dhabi International</AirportName>
+<CityName>Abu Dhabi</CityName>
+<Keywords>auh abu dhabi united arab emirates</Keywords>
+<Destinations>
 26.3926665,49.9777136,Ad Dammam;
 12.8,45.0333333,Aden;
 38.8048355,-77.0469214,Alexandria;
@@ -67,3 +74,5 @@
 35.6894875,139.6917064,Tokyo;
 43.653226,-79.3831843,Toronto;
 8.4874949,76.948623,Trivandrum;
+</Destinations>
+</MightyFlight>

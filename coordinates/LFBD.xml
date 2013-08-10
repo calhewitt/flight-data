@@ -1,3 +1,10 @@
+<MightyFlight>
+<BaseLat>44.8283</BaseLat>
+<BaseLng>-0.7156</BaseLng>
+<AirportName>Bordeaux-Mérignac</AirportName>
+<CityName>Bordeaux</CityName>
+<Keywords>lfbd bordeaux mérignac bordeaux-merignac france</Keywords>
+<Destinations>
 41.91799590000001,8.7386106,Ajaccio/Napoléon Bonaparte;
 36.752887,3.042048,Algiers;
 52.3702157,4.895167900000001,Amsterdam;
@@ -36,3 +43,5 @@
 50.90970040000001,-1.4043509,Southampton;
 48.583148,7.747882,Strasbourg;
 36.81881,10.16596,Tunis;
+</Destinations>
+</MightyFlight>

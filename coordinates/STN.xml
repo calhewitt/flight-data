@@ -1,3 +1,10 @@
+<MightyFlight>
+<BaseLat>51.8850</BaseLat>
+<BaseLng>0.2350</BaseLng>
+<AirportName>London Stanstead</AirportName>
+<CityName>London</CityName>
+<Keywords>stn london stanstead uk</Keywords>
+<Destinations>
 56.162939,10.203921,Aarhus;
 40.5579517,8.319294900000001,Alghero;
 38.3459963,-0.4906855,Alicante;
@@ -128,3 +135,5 @@
 41.33165,19.8318,Tirana;
 45.07098200000001,7.685676,Torino;
 59.18110289999999,10.2587362,Torp;
+</Destinations>
+</MightyFlight>

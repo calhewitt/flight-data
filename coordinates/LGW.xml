@@ -1,3 +1,10 @@
+<MightyFlight>
+<BaseLat>51.1481</BaseLat>
+<BaseLng>-0.1903</BaseLng>
+<AirportName>London Gatwick</AirportName>
+<CityName>London</CityName>
+<Keywords>lgw london gatwick uk</Keywords>
+<Destinations>
 57.0488195,9.921747,Aalborg;
 57.149717,-2.094278,Aberdeen;
 5.5557169,-0.196306,Accra;
@@ -191,3 +198,5 @@
 45.8130293,15.9778949,Zagreb;
 37.7911386,20.7837673,Zakynthos Island;
 47.3686498,8.539182499999999,Zurich;
+</Destinations>
+</MightyFlight>

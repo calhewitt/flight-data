@@ -1,3 +1,10 @@
+<MightyFlight>
+<BaseLat>50.9014</BaseLat>
+<BaseLng>4.4844</BaseLng>
+<AirportName>Brussels</AirportName>
+<CityName>Brussels</CityName>
+<Keywords>ebbr brussels belgium</Keywords>
+<Destinations>
 5.336317999999999,-4.027750999999999,Abidjan;
 24.4666667,54.3666667,Abu Dhabi;
 5.5557169,-0.196306,Accra;
@@ -124,3 +131,5 @@
 3.866666699999999,11.5166667,Yaoundé;
 45.8130293,15.9778949,Zagreb;
 47.3686498,8.539182499999999,Zurich;
+</Destinations>
+</MightyFlight>

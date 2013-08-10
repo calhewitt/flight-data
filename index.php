@@ -17,122 +17,18 @@ if (isset($_GET['airport'])) {
 
 //If the code given is not valid, check if it is a name/city/country
 
-if (file_exists("coordinates/".$airport.".txt") == false) {
+if (file_exists("coordinates/".$airport.".xml") == false) {
   header("Location: search.php?terms=".$airport);
 }
 
-//Set the name, longditude and latitude of the base airport based on its code
+//Open up the xml file of the airport specified and get out the data
 
-if ($airport == "LHR") {
-  $baselat = 51.4775;
-  $baselng = -0.4614;
-  $airportname = "London Heathrow";
-  $city = "London";
-}
-else if ($airport == "LGW") {
-  $baselat = 51.1481;
-  $baselng = -0.1903;
-  $airportname = "London Gatwick";
-  $city = "London";
-}
-else if ($airport == "LST") {
-  $baselat = 51.8850;
-  $baselng = 0.2350;
-  $airportname = "London Stanstead";
-  $city = "London";
-}
-else if ($airport == "LTN") {
-  $baselat = 51.8747;
-  $baselng = -0.3683;
-  $airportname = "London Luton";
-  $city = "London";
-}
-else if ($airport == "JFK") {
-  $baselat = 40.6397;
-  $baselng = -73.7789;
-  $airportname = "JFK New York";
-  $city = "New York";
-}
-else if ($airport == "AUH") {
-  $baselat = 24.4281;
-  $baselng = 54.6470;
-  $airportname = "Abu Dhabi International";
-  $city = "Abu Dhabi";
-}
-else if ($airport == "ALA") {
-  $baselat = 43.3519;
-  $baselng = 77.0406;
-  $airportname = "Almaty, Kazakhstan";
-  $city = "Almaty";
-}
-else if ($airport == "PVG") {
-  $baselat = 31.1433;
-  $baselng = 121.8053;
-  $airportname = "Shanghai (Pudong)";
-  $city = "Shanghai";
-}
-else if ($airport == "CDG") {
-  $baselat = 49.0128;
-  $baselng = 2.5500;
-  $airportname = "Charles de Gaulle, Paris";
-  $city = "Paris";
-}
-else if ($airport == "LAX") {
-  $baselat = 33.9471;
-  $baselng = -118.4082;
-  $airportname = "Los Angeles International";
-  $city = "Los Angeles";
-}
-else if ($airport == "SYD") {
-  $baselat = -33.9461;
-  $baselng = 151.1772;
-  $airportname = "Sydney Kingsford Smith";
-  $city = "Sydney";
-}
-else if ($airport == "EBBR") {
-  $baselat = 50.9014;
-  $baselng = 4.4844;
-  $airportname = "Brussels";
-  $city = "Brussels";
-}
-else if ($airport == "EDDF") {
-  $baselat = 50.0264;
-  $baselng = 8.5431;
-  $airportname = "Frankfurt-am-main";
-  $city = "Frankfurt";
-}
-else if ($airport == "EGBB") {
-  $baselat = 52.4800;
-  $baselng = -1.9100;
-  $airportname = "Birmingham Internaitional";
-  $city = "Birmingham";
-}
-else if ($airport == "LFBD") {
-  $baselat = 44.8283;
-  $baselng = -0.7156;
-  $airportname = "Bordeaux-Mérignac";
-  $city = "Bordeaux";
-}
-else if ($airport == "UTAA") {
-  $baselat = 37.9667;
-  $baselng = 58.3333;
-  $airportname = "Ashgabat International";
-  $city = "Ashgabat";
-}
-else if ($airport == "VTBS") {
-  $baselat = 13.6925;
-  $baselng = 100.7509;
-  $airportname = "Suvarnabhumi Airport";
-  $city = "Bangkok";
-}
-else {
-  $baselat = 0;
-  $baselng = 0;
-}
-
-//Open up the file containing coordinates and split it at semicolons
-
-$latlng = file_get_contents("coordinates/".$airport.".txt");
+$xml = simplexml_load_file("coordinates/".$airport.".xml");
+$latlng = $xml->Destinations;
+$baselat = $xml->BaseLat;
+$baselng = $xml->BaseLng;
+$airportname = $xml->AirportName;
+$city = $xml->CityName;
 
 $latlng = substr($latlng, 3, -2);
 $latlng = explode(";", $latlng);
@@ -286,11 +182,17 @@ function marker(lat, lng, title, red) {
 }
 
 //Show box below search bar and fill it with the clicked airport's name
-function setCurrent(title) {
+function setCurrent(title, instant) {
   $("#selected-text").text(title);
   $("#search").blur();
-  $("#error").fadeOut("fast");
-  $("#selected").fadeIn("fast"); 
+  if (instant == true) {
+    $("#error").hide();
+    $("#selected").show();
+  }
+  else {
+    $("#error").fadeOut("fast");
+    $("#selected").fadeIn("fast"); 
+  }
   selected = title; 
   window.history.pushState("", "", "/?airport=<?php print $airport; ?>&selected=" + title);
 }

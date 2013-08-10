@@ -1,3 +1,10 @@
+<MightyFlight>
+<BaseLat>43.3519</BaseLat>
+<BaseLng>77.0406</BaseLng>
+<AirportName>Almaty, Kazakhstan</AirportName>
+<CityName>Almaty</CityName>
+<Keywords>ala almaty kazakhstan</Keywords>
+<Destinations>
 24.4666667,54.3666667,Abu Dhabi;
 43.635609,51.17122999999999,Aktau;
 50.2833333,57.1666667,Aktyuinsk;
@@ -36,3 +43,5 @@
 51.2333333,51.3666667,Uralsk;
 43.825645,87.616823,Ürümqi;
 49.9833333,82.6166667,Ust Kamenogorsk;
+</Destinations>
+</MightyFlight>

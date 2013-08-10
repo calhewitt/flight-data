@@ -7,56 +7,29 @@ $terms = strtolower($terms);
 if ($terms == "" or !isset($terms)) {
 	header("Location: /?ariport=LHR&intro=false");
 }
-else if (strpos('lhr london heathrow uk', $terms) !== false) {
-	header("Location: /?airport=LHR&intro=false");
+$found = 0;
+
+$filesarray = scandir("coordinates");
+$length =  count($filesarray) - 2;
+$count = 0;
+$found = 0;
+
+foreach ($filesarray as $file) {
+    if ('.' === $file) continue;
+    if ('..' === $file) continue;
+    $xml = simplexml_load_file("coordinates/".$file);
+    $keywords = $xml->Keywords;
+    $keywords = explode(" ", $keywords);
+    foreach ($keywords as $keyword) {
+    	if (strpos($terms, $keyword) !== false) {
+			header("Location: /?intro=false&airport=".substr($file, 0, -4));
+            $found = 1;
+		}
+	}
+    $count++;
+    if ($count == 17 and $found == 0) {
+        header("Location: /?error=notfound&intro=false");
+    }
 }
-else if (strpos('lgw london gatwick uk', $terms) !== false) {
-	header("Location: /?airport=LGW&intro=false");
-}
-else if (strpos('lst london stanstead uk', $terms) !== false) {
-	header("Location: /?airport=LST&intro=false");
-}
-else if (strpos('ltn london luton uk', $terms) !== false) {
-	header("Location: /?airport=LTN&intro=false");
-}
-else if (strpos('jfk kennedy new york usa', $terms) !== false) {
-	header("Location: /?airport=JFK&intro=false");
-}
-else if (strpos('auh abu dhabi united arab emirates', $terms) !== false) {
-	header("Location: /?airport=AUH&intro=false");
-}
-else if (strpos('ala almaty kazakhstan', $terms) !== false) {
-	header("Location: /?airport=ALA&intro=false");
-}
-else if (strpos('pvg pudong shanghai china', $terms) !== false) {
-	header("Location: /?airport=PVG&intro=false");
-}
-else if (strpos('cdg charles de gaulle paris france', $terms) !== false) {
-	header("Location: /?airport=CDG&intro=false");
-}
-else if (strpos('lax los angeles usa', $terms) !== false) {
-	header("Location: /?airport=LAX&intro=false");
-}
-else if (strpos('syd sydney kingsford smith australia', $terms) !== false) {
-	header("Location: /?airport=SYD&intro=false");
-}
-else if (strpos('ebbr brussels belgium', $terms) !== false) {
-	header("Location: /?airport=EBBR&intro=false");
-}
-else if (strpos('eddf frankfurt germany', $terms) !== false) {
-	header("Location: /?airport=EDDF&intro=false");
-}
-else if (strpos('egbb birmingham uk', $terms) !== false) {
-	header("Location: /?airport=EGBB&intro=false");
-}
-else if (strpos('lfbd bordeaux mérignac bordeaux-merignac france', $terms) !== false) {
-	header("Location: /?airport=LFBD&intro=false");
-}
-else if (strpos('utaa ashgabat turkmenistan', $terms) !== false) {
-	header("Location: /?airport=UTAA&intro=false");
-}
-else if (strpos('vtbs suvarnabhumi thailand', $terms) !== false) {
-	header("Location: /?airport=VTBS&intro=false");
-}
-else header("Location: /?error=notfound&intro=false");;
+
 ?>

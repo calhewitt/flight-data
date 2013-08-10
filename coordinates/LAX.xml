@@ -1,3 +1,10 @@
+<MightyFlight>
+<BaseLat>33.9471</BaseLat>
+<BaseLng>-118.4082</BaseLng>
+<AirportName>Los Angeles International</AirportName>
+<CityName>Los Angeles</CityName>
+<Keywords>lax los angeles usa</Keywords>
+<Destinations>
 35.110703,-106.609991,Albuquerque;
 52.3702157,4.895167900000001,Amsterdam;
 61.2180556,-149.9002778,Anchorage;
@@ -140,3 +147,5 @@
 32.6926512,-114.6276916,Yuma;
 22.7708555,-102.5832426,Zacatecas;
 47.3686498,8.539182499999999,Zurich;
+</Destinations>
+</MightyFlight>

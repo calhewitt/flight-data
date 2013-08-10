@@ -1,3 +1,10 @@
+<MightyFlight>
+<BaseLat>31.1433</BaseLat>
+<BaseLng>121.8053</BaseLng>
+<AirportName>Shanghai (Pudong)</AirportName>
+<CityName>Shanghai</CityName>
+<Keywords>pvg pudong shanghai china</Keywords>
+<Destinations>
 52.3702157,4.895167900000001,Amsterdam;
 -36.8484597,174.7633315,Auckland;
 4.8902778,114.9422222,Bandar Seri Begawan;
@@ -121,3 +128,5 @@
 34.7466,113.625368,Zhengzhou;
 22.270715,113.576726,Zhuhai;
 47.3686498,8.539182499999999,Zurich;
+</Destinations>
+</MightyFlight>
