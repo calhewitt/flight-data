@@ -51,7 +51,7 @@ var selected;
 
 $(document).ready(function() {
 
-  window.history.pushState("", "", "/?airport=<?php print $airport; ?>");
+  window.history.pushState("", "", "?airport=<?php print $airport; ?>");
 
   //If the user is at the start of a session, show the intro
 
@@ -90,7 +90,7 @@ $(document).ready(function() {
   }); 
 
   $("#selected-text").click(function() {
-    window.location = "/search.php?terms=" + selected;
+    window.location = "search.php?terms=" + selected;
   });   
 
   $("#wikipedia-link").click(function() {
@@ -194,13 +194,13 @@ function setCurrent(title, instant) {
     $("#selected").fadeIn("fast"); 
   }
   selected = title; 
-  window.history.pushState("", "", "/?airport=<?php print $airport; ?>&selected=" + title);
+  window.history.pushState("", "", "?airport=<?php print $airport; ?>&selected=" + title);
 }
 
 function closeDialogs() {
   $("#selected").fadeOut("fast");
   $("#error").fadeOut("fast");
-  window.history.pushState("", "", "/?airport=<?php print $airport; ?>");
+  window.history.pushState("", "", "?airport=<?php print $airport; ?>");
 }
 
 function help() {
@@ -256,7 +256,7 @@ function closeMask() {
         <img src = "close.png" onclick = "closeDialogs();">
         </div>
         <script>
-          window.history.pushState("", "", "/");
+          window.history.pushState("", "", "");
         </script>';
       }
     }

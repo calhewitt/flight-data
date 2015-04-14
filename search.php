@@ -5,7 +5,7 @@
 $terms = $_GET['terms'];
 $terms = strtolower($terms);
 if ($terms == "" or !isset($terms)) {
-	header("Location: /?ariport=LHR&intro=false");
+	header("Location: index.php?ariport=LHR&intro=false");
 }
 $found = 0;
 
@@ -22,13 +22,13 @@ foreach ($filesarray as $file) {
     $keywords = explode(" ", $keywords);
     foreach ($keywords as $keyword) {
     	if (strpos($terms, $keyword) !== false) {
-			header("Location: /?intro=false&airport=".substr($file, 0, -4));
+			header("Location: index.php?intro=false&airport=".substr($file, 0, -4));
             $found = 1;
 		}
 	}
     $count++;
     if ($count == 17 and $found == 0) {
-        header("Location: /?error=notfound&intro=false");
+        header("Location: index.php?error=notfound&intro=false");
     }
 }
 
