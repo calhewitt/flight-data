@@ -1,7 +1,7 @@
 MightyFlight
 ============
 
-MightyFlight is a web app which visualises the air routes from a given airport in the world, using open data and the Google Maps Api. A working copy of the project is hosted at http://www.mightyflight.tk/, and this repository contains all of the files necessary for a full version of the app to run. Once downloaded and installed on a web server running PHP, the software will work out of the box, without any need for databases etc.
+MightyFlight is a web app which visualises the air routes from a given airport in the world, using open data and the Google Maps Api. This repository contains all of the files necessary for a full version of the app to run. Once downloaded and installed on a web server running PHP, the software will work out of the box, without any need for databases etc.
 
 License
 -------
